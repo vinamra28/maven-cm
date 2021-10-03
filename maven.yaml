@@ -13,6 +13,8 @@ spec:
   workspaces:
     - name: source
       description: The workspace consisting of maven project.
+    - name: cache
+      description: The workspace consisting of maven dependencies.
     - name: maven-settings
       description: >-
         The workspace consisting of the custom maven settings
@@ -110,4 +112,5 @@ spec:
       args:
         - -s
         - $(workspaces.maven-settings.path)/settings.xml
+        - -Dmaven.repo.local=$(workspaces.cache.path)
         - "$(params.GOALS)"
